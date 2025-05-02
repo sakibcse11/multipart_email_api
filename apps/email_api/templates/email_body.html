@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Candidate Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        .section {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .info-item {
+            margin: 8px 0;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+            display: inline-block;
+            width: 100px;
+        }
+        .screenshot-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .screenshot {
+            max-width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .project-idea {
+            background-color: #fafafa;
+            padding: 15px;
+            border-left: 4px solid #4caf50;
+            border-radius: 4px;
+        }
+        .project-idea-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align:center; color:#4caf50;">Candidate Information</h2>
+        
+        <div class="section">
+            <div class="info-item">
+                <span class="label">Name:</span> {{ name }}
+            </div>
+            <div class="info-item">
+                <span class="label">Education:</span> {{ education }}
+            </div>
+            <div class="info-item">
+                <span class="label">Contact:</span> {{ contact }}
+            </div>
+            <div class="info-item">
+                <span class="label">Address:</span> {{ address }}
+            </div>
+        </div>
+
+        <div class="screenshot-container">
+            <img src="cid:github_screenshot" alt="GitHub Profile Screenshot" class="screenshot">
+        </div>
+
+        <div class="section project-idea">
+            <div class="project-idea-title">Project Idea</div>
+            <div>{{ project_idea }}</div>
+        </div>
+    </div>
+</body>
+</html>

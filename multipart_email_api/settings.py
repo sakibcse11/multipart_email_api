@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 
 from django.contrib.messages import api
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +29,8 @@ SECRET_KEY = 'django-insecure-s2ack7^5to9z#$pu*lo#ul*k3+c9nd!cs$!73_9%hq$_m43!_d
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+ALLOWED_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com']
+ALLOWED_SPECIAL_EMAILS = ['careers@accelx.net']
 
 # Application definition
 
@@ -46,10 +48,11 @@ LOCAL_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'rest_framework'
+    'rest_framework',
+    'drf_spectacular',
 ]
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -115,6 +118,11 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+SPECTACULAR_SETTINGS = {
+    'COMPONENT_SPLIT_REQUEST': True,
+    'MULTIPART_BODY_PARAMETER_SCHEMA': True,
 }
 
 # Internationalization
@@ -138,3 +146,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#SMTP Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST','smtp.gmail.com')
+EMAIL_PORT = config('EMAIL_PORT',587)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS','True') == 'True'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER','')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD','')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL',EMAIL_HOST_USER)
+
