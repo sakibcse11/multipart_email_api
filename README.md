@@ -8,7 +8,7 @@ A Django REST Framework API that sends HTML-formatted emails with embedded image
 - **Multiple Email Service Provider Support**:
   - Django's built-in SMTP (Primary)
   - Amazon Simple Email Service (SES) (Fallback)
-- **Recipient Validation**: Only allows emails from specific domains (Gmail, Hotmail, Yahoo) and specific addresses (careers@accelx.net)
+- **Recipient Validation**: Only allows emails from specific domains (Gmail, Hotmail, Yahoo) and specific addresses (*)
 - **Image Validation**: Validates uploaded images (format, size)
 - **Well-Structured HTML Emails**: Professionally formatted HTML emails with styling
 - **Error Handling**: Comprehensive error handling and validation
